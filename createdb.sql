@@ -2,11 +2,11 @@
 CREATE TABLE vitaminas (
                 codVitaminas NUMBER NOT NULL,
                 idClass NUMBER NOT NULL,
-                idComercial VARCHAR2 NOT NULL,
-                nomeComercial VARCHAR2 NOT NULL,
-                nomeGenerico VARCHAR2 NOT NULL,
-                nomeEtiqueta VARCHAR2 NOT NULL,
-                nomeOrdemP VARCHAR2 NOT NULL,
+                idComercial VARCHAR2(80) NOT NULL,
+                nomeComercial VARCHAR2(80) NOT NULL,
+                nomeGenerico VARCHAR2(80) NOT NULL,
+                nomeEtiqueta VARCHAR2(80) NOT NULL,
+                nomeOrdemP VARCHAR2(80) NOT NULL,
                 CONSTRAINT CODVITAMINAS PRIMARY KEY (codVitaminas, idClass)
 );
 COMMENT ON COLUMN vitaminas.codVitaminas IS 'Código da vitamina';
@@ -21,11 +21,11 @@ COMMENT ON COLUMN vitaminas.nomeOrdemP IS 'Nome presente na ordem de produção'
 CREATE TABLE solucoesFisiologicas (
                 codSolucoes NUMBER NOT NULL,
                 idClass NUMBER NOT NULL,
-                idComercial VARCHAR2 NOT NULL,
-                nomeComercial VARCHAR2 NOT NULL,
-                nomeGenerico VARCHAR2 NOT NULL,
-                nomeEtiqueta VARCHAR2 NOT NULL,
-                nomeOrdemP VARCHAR2 NOT NULL,
+                idComercial VARCHAR2(80) NOT NULL,
+                nomeComercial VARCHAR2(80) NOT NULL,
+                nomeGenerico VARCHAR2(80) NOT NULL,
+                nomeEtiqueta VARCHAR2(80) NOT NULL,
+                nomeOrdemP VARCHAR2(80) NOT NULL,
                 CONSTRAINT CODSOLUCOES PRIMARY KEY (codSolucoes, idClass)
 );
 COMMENT ON COLUMN solucoesFisiologicas.codSolucoes IS 'Código da solução fisiológica';
@@ -40,11 +40,11 @@ COMMENT ON COLUMN solucoesFisiologicas.nomeOrdemP IS 'Nome presente na ordem de 
 CREATE TABLE oligoelementos (
                 codOligo NUMBER NOT NULL,
                 idClass NUMBER NOT NULL,
-                idComercial VARCHAR2 NOT NULL,
-                nomeComercial VARCHAR2 NOT NULL,
-                nomeGenerico VARCHAR2 NOT NULL,
-                nomeEtiqueta VARCHAR2 NOT NULL,
-                nomeOrdemP VARCHAR2 NOT NULL,
+                idComercial VARCHAR2(80) NOT NULL,
+                nomeComercial VARCHAR2(80) NOT NULL,
+                nomeGenerico VARCHAR2(80) NOT NULL,
+                nomeEtiqueta VARCHAR2(80) NOT NULL,
+                nomeOrdemP VARCHAR2(80) NOT NULL,
                 CONSTRAINT CODOLIGO PRIMARY KEY (codOligo, idClass)
 );
 COMMENT ON COLUMN oligoelementos.codOligo IS 'Código do oligoelemento';
@@ -59,11 +59,11 @@ COMMENT ON COLUMN oligoelementos.nomeOrdemP IS 'Nome presente na ordem de produ�
 CREATE TABLE lipidios (
                 codLipidio NUMBER NOT NULL,
                 idClass NUMBER NOT NULL,
-                idComercial VARCHAR2 NOT NULL,
-                nomeComercial VARCHAR2 NOT NULL,
-                nomeGenerico VARCHAR2 NOT NULL,
-                nomeEtiqueta VARCHAR2 NOT NULL,
-                nomeOrdemP VARCHAR2 NOT NULL,
+                idComercial VARCHAR2(80) NOT NULL,
+                nomeComercial VARCHAR2(80) NOT NULL,
+                nomeGenerico VARCHAR2(80) NOT NULL,
+                nomeEtiqueta VARCHAR2(80) NOT NULL,
+                nomeOrdemP VARCHAR2(80) NOT NULL,
                 CONSTRAINT CODLIPIDIO PRIMARY KEY (codLipidio, idClass)
 );
 COMMENT ON COLUMN lipidios.codLipidio IS 'Código do lipídio';
@@ -78,11 +78,11 @@ COMMENT ON COLUMN lipidios.nomeOrdemP IS 'Nome presente na ordem de produção';
 CREATE TABLE glicoses (
                 codGlicose NUMBER NOT NULL,
                 idClass NUMBER NOT NULL,
-                idComercial VARCHAR2 NOT NULL,
-                nomeComercial VARCHAR2 NOT NULL,
-                nomeGenerico VARCHAR2 NOT NULL,
-                nomeEtiqueta VARCHAR2 NOT NULL,
-                nomeOrdemP VARCHAR2 NOT NULL,
+                idComercial VARCHAR2(80) NOT NULL,
+                nomeComercial VARCHAR2(80) NOT NULL,
+                nomeGenerico VARCHAR2(80) NOT NULL,
+                nomeEtiqueta VARCHAR2(80) NOT NULL,
+                nomeOrdemP VARCHAR2(80) NOT NULL,
                 CONSTRAINT CODGLICOSE PRIMARY KEY (codGlicose, idClass)
 );
 COMMENT ON COLUMN glicoses.codGlicose IS 'Código da glicose';
@@ -97,11 +97,11 @@ COMMENT ON COLUMN glicoses.nomeOrdemP IS 'Nome presente na ordem de produção';
 CREATE TABLE eletrolitos (
                 codEletrolito NUMBER NOT NULL,
                 idClass NUMBER NOT NULL,
-                idComercial VARCHAR2 NOT NULL,
-                nomeComercial VARCHAR2 NOT NULL,
-                nomeGenerico VARCHAR2 NOT NULL,
-                nomeEtiqueta VARCHAR2 NOT NULL,
-                nomeOrdemP VARCHAR2 NOT NULL,
+                idComercial VARCHAR2(80) NOT NULL,
+                nomeComercial VARCHAR2(80) NOT NULL,
+                nomeGenerico VARCHAR2(80) NOT NULL,
+                nomeEtiqueta VARCHAR2(80) NOT NULL,
+                nomeOrdemP VARCHAR2(80) NOT NULL,
                 CONSTRAINT CODELETROLITO PRIMARY KEY (codEletrolito, idClass)
 );
 COMMENT ON COLUMN eletrolitos.codEletrolito IS 'Código do eletrólito';
@@ -116,11 +116,11 @@ COMMENT ON COLUMN eletrolitos.nomeOrdemP IS 'Nome presente na ordem de produçã
 CREATE TABLE aminoacidos (
                 codAminoacido NUMBER NOT NULL,
                 idClass NUMBER NOT NULL,
-                idComercial VARCHAR2 NOT NULL,
-                nomeComercial VARCHAR2 NOT NULL,
-                nomeGenerico VARCHAR2 NOT NULL,
-                nomeEtiqueta VARCHAR2 NOT NULL,
-                nomeOrdemP VARCHAR2 NOT NULL,
+                idComercial VARCHAR2(80) NOT NULL,
+                nomeComercial VARCHAR2(80) NOT NULL,
+                nomeGenerico VARCHAR2(80) NOT NULL,
+                nomeEtiqueta VARCHAR2(80) NOT NULL,
+                nomeOrdemP VARCHAR2(80) NOT NULL,
                 CONSTRAINT CODAMINOACIDO PRIMARY KEY (codAminoacido, idClass)
 );
 COMMENT ON COLUMN aminoacidos.codAminoacido IS 'Código do aminoácido';
@@ -134,9 +134,9 @@ COMMENT ON COLUMN aminoacidos.nomeOrdemP IS 'Nome presente na ordem de produçã
 
 CREATE TABLE hospital (
                 idHospital NUMBER NOT NULL,
-                CNPJ VARCHAR2(18) NOT NULL,
-                nomeHospital VARCHAR2 NOT NULL,
-                razaoSocial VARCHAR2 NOT NULL,
+                CNPJ VARCHAR2(80)(18) NOT NULL,
+                nomeHospital VARCHAR2(80) NOT NULL,
+                razaoSocial VARCHAR2(80) NOT NULL,
                 CONSTRAINT IDHOSPITAL PRIMARY KEY (idHospital, CNPJ)
 );
 COMMENT ON TABLE hospital IS 'Tabela contendo as informações do hospital';
@@ -148,10 +148,10 @@ COMMENT ON COLUMN hospital.razaoSocial IS 'Razão social do hospital';
 
 CREATE TABLE secao (
                 idSecao NUMBER NOT NULL,
-                CNPJ VARCHAR2(18) NOT NULL,
+                CNPJ VARCHAR2(80)(18) NOT NULL,
                 idHospital NUMBER NOT NULL,
-                local VARCHAR2 NOT NULL,
-                nome VARCHAR2 NOT NULL,
+                local VARCHAR2(80) NOT NULL,
+                nome VARCHAR2(80) NOT NULL,
                 CONSTRAINT IDSECAO PRIMARY KEY (idSecao)
 );
 COMMENT ON TABLE secao IS 'Tabela que armazena as informações das seções do hospital';
@@ -165,8 +165,8 @@ COMMENT ON COLUMN secao.nome IS 'Nome da seção';
 CREATE TABLE leito (
                 idLeito NUMBER NOT NULL,
                 idSecao NUMBER NOT NULL,
-                numero VARCHAR2 NOT NULL,
-                local VARCHAR2 NOT NULL,
+                numero VARCHAR2(80) NOT NULL,
+                local VARCHAR2(80) NOT NULL,
                 CONSTRAINT IDLEITO PRIMARY KEY (idLeito)
 );
 COMMENT ON TABLE leito IS 'Tabela com os dados dos leitos da seção';
@@ -178,7 +178,7 @@ COMMENT ON COLUMN leito.local IS 'Localização do leito';
 
 CREATE TABLE convenio (
                 idConvenio NUMBER NOT NULL,
-                nome VARCHAR2(20) NOT NULL,
+                nome VARCHAR2(80)(20) NOT NULL,
                 CONSTRAINT IDCONVENIO PRIMARY KEY (idConvenio)
 );
 COMMENT ON TABLE convenio IS 'Tabela para armazenar os convênios';
@@ -188,13 +188,13 @@ COMMENT ON COLUMN convenio.nome IS 'Nome do convênio';
 
 CREATE TABLE medico (
                 idMedico NUMBER NOT NULL,
-                CRM VARCHAR2 NOT NULL,
-                CNPJ VARCHAR2(18) NOT NULL,
+                CRM VARCHAR2(80) NOT NULL,
+                CNPJ VARCHAR2(80)(18) NOT NULL,
                 idHospital NUMBER NOT NULL,
                 idConvenio NUMBER NOT NULL,
-                nome VARCHAR2 NOT NULL,
-                sobrenome VARCHAR2 NOT NULL,
-                especializacao VARCHAR2,
+                nome VARCHAR2(80) NOT NULL,
+                sobrenome VARCHAR2(80) NOT NULL,
+                especializacao VARCHAR2(80),
                 CONSTRAINT IDMEDICO PRIMARY KEY (idMedico, CRM)
 );
 COMMENT ON TABLE medico IS 'Tabela contento informações sobre o médico';
@@ -211,11 +211,11 @@ COMMENT ON COLUMN medico.especializacao IS 'Nível de especialização do médic
 CREATE TABLE paciente (
                 idPaciente NUMBER NOT NULL,
                 idConvenio NUMBER NOT NULL,
-                CRM VARCHAR2 NOT NULL,
+                CRM VARCHAR2(80) NOT NULL,
                 idMedico NUMBER NOT NULL,
-                CPF VARCHAR2(14) NOT NULL,
-                nome VARCHAR2(25) NOT NULL,
-                sobrenome VARCHAR2(60) NOT NULL,
+                CPF VARCHAR2(80)(14) NOT NULL,
+                nome VARCHAR2(80)(25) NOT NULL,
+                sobrenome VARCHAR2(80)(60) NOT NULL,
                 dataNasc DATE NOT NULL,
                 sexo CHAR NOT NULL,
                 CONSTRAINT CPF PRIMARY KEY (idPaciente, idConvenio)
@@ -234,7 +234,7 @@ COMMENT ON COLUMN paciente.sexo IS 'Sexo do paciente';
 
 CREATE TABLE acessoNutri (
                 idAcesso NUMBER NOT NULL,
-                tipoAcesso VARCHAR2(20) NOT NULL,
+                tipoAcesso VARCHAR2(80)(20) NOT NULL,
                 CONSTRAINT IDACESSO PRIMARY KEY (idAcesso)
 );
 COMMENT ON TABLE acessoNutri IS 'Tabela para armazenar os tipos de acesso da nutrição parenteral';
@@ -245,17 +245,17 @@ COMMENT ON COLUMN acessoNutri.tipoAcesso IS 'Nome do tipo de acesso à nutriçã
 CREATE TABLE formNutri (
                 idNutri NUMBER NOT NULL,
                 idMedico NUMBER NOT NULL,
-                CRM VARCHAR2 NOT NULL,
+                CRM VARCHAR2(80) NOT NULL,
                 peso FLOAT NOT NULL,
                 idHospital NUMBER NOT NULL,
-                CNPJ VARCHAR2(18) NOT NULL,
+                CNPJ VARCHAR2(80)(18) NOT NULL,
                 idSecao NUMBER NOT NULL,
                 idLeito NUMBER NOT NULL,
                 idConvenio NUMBER NOT NULL,
                 idPaciente NUMBER NOT NULL,
                 idAcesso NUMBER NOT NULL,
                 data DATE NOT NULL,
-                velocidadeInfusao VARCHAR2 NOT NULL,
+                velocidadeInfusao VARCHAR2(80) NOT NULL,
                 horas FLOAT NOT NULL,
                 volumeTotal FLOAT NOT NULL,
                 volumeEquipo FLOAT NOT NULL,
@@ -285,7 +285,7 @@ CREATE TABLE vitaminaNutri (
                 idNutri NUMBER NOT NULL,
                 codVitaminas NUMBER NOT NULL,
                 idClass NUMBER NOT NULL,
-                qtd VARCHAR2 NOT NULL,
+                qtd VARCHAR2(80) NOT NULL,
                 CONSTRAINT CODVITAMINANUTRI PRIMARY KEY (codVitaminaNutri)
 );
 COMMENT ON TABLE vitaminaNutri IS 'Tabela para registro das vitaminas presentes na prescrição';
@@ -301,7 +301,7 @@ CREATE TABLE solucaoNutri (
                 idNutri NUMBER NOT NULL,
                 idClass NUMBER NOT NULL,
                 codSolucoes NUMBER NOT NULL,
-                qtd VARCHAR2 NOT NULL,
+                qtd VARCHAR2(80) NOT NULL,
                 CONSTRAINT CODSOLUCAONUTRI PRIMARY KEY (codSolucaoNutri)
 );
 COMMENT ON TABLE solucaoNutri IS 'Tabela para registro das soluções fisiológicas presentes na prescrição';
@@ -317,7 +317,7 @@ CREATE TABLE oligoNutri (
                 idNutri NUMBER NOT NULL,
                 idClass NUMBER NOT NULL,
                 codOligo NUMBER NOT NULL,
-                qtd VARCHAR2 NOT NULL,
+                qtd VARCHAR2(80) NOT NULL,
                 CONSTRAINT CODOLIGONUTRI PRIMARY KEY (codOligoNutri)
 );
 COMMENT ON TABLE oligoNutri IS 'Tabela para registro dos oligoelementos presentes na prescrição';
@@ -333,7 +333,7 @@ CREATE TABLE lipiNutri (
                 codLipidio NUMBER NOT NULL,
                 idClass NUMBER NOT NULL,
                 idNutri NUMBER NOT NULL,
-                qtd VARCHAR2 NOT NULL,
+                qtd VARCHAR2(80) NOT NULL,
                 CONSTRAINT CODLIPINUTRI PRIMARY KEY (codLipiNutri)
 );
 COMMENT ON TABLE lipiNutri IS 'Tabela para registro dos lipídios presentes na prescrição';
@@ -349,7 +349,7 @@ CREATE TABLE glicoNutri (
                 codGlicose NUMBER NOT NULL,
                 idNutri NUMBER NOT NULL,
                 idClass NUMBER NOT NULL,
-                qtd VARCHAR2 NOT NULL,
+                qtd VARCHAR2(80) NOT NULL,
                 CONSTRAINT CODGLICONUTRI PRIMARY KEY (codGlicoNutri)
 );
 COMMENT ON TABLE glicoNutri IS 'Tabela para registro das glicoses presentes na prescrição';
@@ -365,7 +365,7 @@ CREATE TABLE eletroNutri (
                 idNutri NUMBER NOT NULL,
                 idClass NUMBER NOT NULL,
                 codEletrolito NUMBER NOT NULL,
-                qtd VARCHAR2 NOT NULL,
+                qtd VARCHAR2(80) NOT NULL,
                 CONSTRAINT CODELETRONUTRI PRIMARY KEY (codEletroNutri)
 );
 COMMENT ON TABLE eletroNutri IS 'Tabela para registro dos eletrólitos presentes na prescrição';
@@ -381,7 +381,7 @@ CREATE TABLE aminoNutri (
                 idNutri NUMBER NOT NULL,
                 codAminoacido NUMBER NOT NULL,
                 idClass NUMBER NOT NULL,
-                qtd VARCHAR2 NOT NULL,
+                qtd VARCHAR2(80) NOT NULL,
                 CONSTRAINT CODAMINONUTRI PRIMARY KEY (codAminoNutri)
 );
 COMMENT ON TABLE aminoNutri IS 'Tabela para registro dos aminoácidos presentes na prescrição';
