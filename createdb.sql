@@ -132,34 +132,34 @@ COMMENT ON COLUMN aminoacidos.nomeEtiqueta IS 'Nome presente na etiqueta';
 COMMENT ON COLUMN aminoacidos.nomeOrdemP IS 'Nome presente na ordem de produção';
 
 
-CREATE TABLE nome (
-                nome NUMBER NOT NULL,
+CREATE TABLE hospital (
+                idHospital NUMBER NOT NULL,
                 CNPJ VARCHAR2(18) NOT NULL,
-                nome_1 VARCHAR2 NOT NULL,
+                nomeHospital VARCHAR2 NOT NULL,
                 razaoSocial VARCHAR2 NOT NULL,
-                CONSTRAINT IDHOSPITAL PRIMARY KEY (nome, CNPJ)
+                CONSTRAINT IDHOSPITAL PRIMARY KEY (idHospital, CNPJ)
 );
-COMMENT ON TABLE nome IS 'Tabela contendo as informações do hospital';
-COMMENT ON COLUMN nome.nome IS 'Identificação do hospital.';
-COMMENT ON COLUMN nome.CNPJ IS 'Cadastro Nacional de Pessoa Jurídica da instituição.';
-COMMENT ON COLUMN nome.nome_1 IS 'Nome registrado no CNPJ do Hospital';
-COMMENT ON COLUMN nome.razaoSocial IS 'Razão social do hospital';
+COMMENT ON TABLE hospital IS 'Tabela contendo as informações do hospital';
+COMMENT ON COLUMN hospital.idHospital IS 'Identificação do hospital.';
+COMMENT ON COLUMN hospital.CNPJ IS 'Cadastro Nacional de Pessoa Jurídica da instituição.';
+COMMENT ON COLUMN hospital.nomeHospital IS 'Nome registrado no CNPJ do Hospital';
+COMMENT ON COLUMN hospital.razaoSocial IS 'Razão social do hospital';
 
 
 CREATE TABLE secao (
                 idSecao NUMBER NOT NULL,
                 CNPJ VARCHAR2(18) NOT NULL,
-                nome NUMBER NOT NULL,
+                idHospital NUMBER NOT NULL,
                 local VARCHAR2 NOT NULL,
-                nome_1 VARCHAR2 NOT NULL,
+                nome VARCHAR2 NOT NULL,
                 CONSTRAINT IDSECAO PRIMARY KEY (idSecao)
 );
 COMMENT ON TABLE secao IS 'Tabela que armazena as informações das seções do hospital';
 COMMENT ON COLUMN secao.idSecao IS 'Identificação da seção';
 COMMENT ON COLUMN secao.CNPJ IS 'Cadastro Nacional de Pessoa Jurídica da instituição.';
-COMMENT ON COLUMN secao.nome IS 'Identificação do hospital.';
+COMMENT ON COLUMN secao.idHospital IS 'Identificação do hospital.';
 COMMENT ON COLUMN secao.local IS 'Onde a seção fica localizada no hospital';
-COMMENT ON COLUMN secao.nome_1 IS 'Nome da seção';
+COMMENT ON COLUMN secao.nome IS 'Nome da seção';
 
 
 CREATE TABLE leito (
@@ -190,9 +190,9 @@ CREATE TABLE medico (
                 idMedico NUMBER NOT NULL,
                 CRM VARCHAR2 NOT NULL,
                 CNPJ VARCHAR2(18) NOT NULL,
-                nome NUMBER NOT NULL,
+                idHospital NUMBER NOT NULL,
                 idConvenio NUMBER NOT NULL,
-                nome_1 VARCHAR2 NOT NULL,
+                nome VARCHAR2 NOT NULL,
                 sobrenome VARCHAR2 NOT NULL,
                 especializacao VARCHAR2,
                 CONSTRAINT IDMEDICO PRIMARY KEY (idMedico, CRM)
@@ -201,9 +201,9 @@ COMMENT ON TABLE medico IS 'Tabela contento informações sobre o médico';
 COMMENT ON COLUMN medico.idMedico IS 'Identificação do médico no banco de dados';
 COMMENT ON COLUMN medico.CRM IS 'Número de registro do médico';
 COMMENT ON COLUMN medico.CNPJ IS 'Cadastro Nacional de Pessoa Jurídica da instituição.';
-COMMENT ON COLUMN medico.nome IS 'Identificação do hospital.';
+COMMENT ON COLUMN medico.idHospital IS 'Identificação do hospital.';
 COMMENT ON COLUMN medico.idConvenio IS 'Identificação do convênio';
-COMMENT ON COLUMN medico.nome_1 IS 'Primeiro nome do médico';
+COMMENT ON COLUMN medico.nome IS 'Primeiro nome do médico';
 COMMENT ON COLUMN medico.sobrenome IS 'Sobrenome do médico';
 COMMENT ON COLUMN medico.especializacao IS 'Nível de especialização do médico';
 
@@ -247,7 +247,7 @@ CREATE TABLE formNutri (
                 idMedico NUMBER NOT NULL,
                 CRM VARCHAR2 NOT NULL,
                 peso FLOAT NOT NULL,
-                nome NUMBER NOT NULL,
+                idHospital NUMBER NOT NULL,
                 CNPJ VARCHAR2(18) NOT NULL,
                 idSecao NUMBER NOT NULL,
                 idLeito NUMBER NOT NULL,
@@ -266,7 +266,7 @@ COMMENT ON COLUMN formNutri.idNutri IS 'Chave primária da tabela.';
 COMMENT ON COLUMN formNutri.idMedico IS 'Identificação do médico no banco de dados';
 COMMENT ON COLUMN formNutri.CRM IS 'Número de registro do médico';
 COMMENT ON COLUMN formNutri.peso IS 'Peso do paciente';
-COMMENT ON COLUMN formNutri.nome IS 'Identificação do hospital.';
+COMMENT ON COLUMN formNutri.idHospital IS 'Identificação do hospital.';
 COMMENT ON COLUMN formNutri.CNPJ IS 'Cadastro Nacional de Pessoa Jurídica da instituição.';
 COMMENT ON COLUMN formNutri.idSecao IS 'Identificação da seção';
 COMMENT ON COLUMN formNutri.idLeito IS 'Identificação do leito';
@@ -428,18 +428,18 @@ REFERENCES aminoacidos (idClass, codAminoacido)
 NOT DEFERRABLE;
 
 ALTER TABLE secao ADD CONSTRAINT NOME_SECAO_FK
-FOREIGN KEY (nome, CNPJ)
-REFERENCES nome (nome, CNPJ)
+FOREIGN KEY (idHospital, CNPJ)
+REFERENCES hospital (idHospital, CNPJ)
 NOT DEFERRABLE;
 
 ALTER TABLE formNutri ADD CONSTRAINT NOME_IDENTIFYNUTRI_FK
-FOREIGN KEY (nome, CNPJ)
-REFERENCES nome (nome, CNPJ)
+FOREIGN KEY (idHospital, CNPJ)
+REFERENCES hospital (idHospital, CNPJ)
 NOT DEFERRABLE;
 
 ALTER TABLE medico ADD CONSTRAINT NOME_MEDICO_FK
-FOREIGN KEY (nome, CNPJ)
-REFERENCES nome (nome, CNPJ)
+FOREIGN KEY (idHospital, CNPJ)
+REFERENCES hospital (idHospital, CNPJ)
 NOT DEFERRABLE;
 
 ALTER TABLE leito ADD CONSTRAINT SECAO_LEITO_FK
