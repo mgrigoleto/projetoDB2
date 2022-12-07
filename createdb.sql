@@ -78,7 +78,7 @@ CREATE TABLE aminoacidos (
 
 CREATE TABLE hospital (
                 idHospital NUMBER NOT NULL,
-                CNPJ VARCHAR2(80)(18) NOT NULL,
+                CNPJ VARCHAR2(18) NOT NULL,
                 nomeHospital VARCHAR2(80) NOT NULL,
                 razaoSocial VARCHAR2(80) NOT NULL,
                 CONSTRAINT IDHOSPITAL PRIMARY KEY (idHospital, CNPJ)
@@ -86,7 +86,7 @@ CREATE TABLE hospital (
 
 CREATE TABLE secao (
                 idSecao NUMBER NOT NULL,
-                CNPJ VARCHAR2(80)(18) NOT NULL,
+                CNPJ VARCHAR2(18) NOT NULL,
                 idHospital NUMBER NOT NULL,
                 local VARCHAR2(80) NOT NULL,
                 nome VARCHAR2(80) NOT NULL,
@@ -110,7 +110,7 @@ CREATE TABLE convenio (
 CREATE TABLE medico (
                 idMedico NUMBER NOT NULL,
                 CRM VARCHAR2(80) NOT NULL,
-                CNPJ VARCHAR2(80)(18) NOT NULL,
+                CNPJ VARCHAR2(18) NOT NULL,
                 idHospital NUMBER NOT NULL,
                 idConvenio NUMBER NOT NULL,
                 nome VARCHAR2(80) NOT NULL,
@@ -124,9 +124,9 @@ CREATE TABLE paciente (
                 idConvenio NUMBER NOT NULL,
                 CRM VARCHAR2(80) NOT NULL,
                 idMedico NUMBER NOT NULL,
-                CPF VARCHAR2(80)(14) NOT NULL,
-                nome VARCHAR2(80)(25) NOT NULL,
-                sobrenome VARCHAR2(80)(60) NOT NULL,
+                CPF VARCHAR2(14) NOT NULL,
+                nome VARCHAR2(25) NOT NULL,
+                sobrenome VARCHAR2(60) NOT NULL,
                 dataNasc DATE NOT NULL,
                 sexo CHAR NOT NULL,
                 CONSTRAINT CPF PRIMARY KEY (idPaciente, idConvenio)
@@ -134,7 +134,7 @@ CREATE TABLE paciente (
 
 CREATE TABLE acessoNutri (
                 idAcesso NUMBER NOT NULL,
-                tipoAcesso VARCHAR2(80)(20) NOT NULL,
+                tipoAcesso VARCHAR2(20) NOT NULL,
                 CONSTRAINT IDACESSO PRIMARY KEY (idAcesso)
 );
 
@@ -144,7 +144,7 @@ CREATE TABLE formNutri (
                 CRM VARCHAR2(80) NOT NULL,
                 peso FLOAT NOT NULL,
                 idHospital NUMBER NOT NULL,
-                CNPJ VARCHAR2(80)(18) NOT NULL,
+                CNPJ VARCHAR2(18) NOT NULL,
                 idSecao NUMBER NOT NULL,
                 idLeito NUMBER NOT NULL,
                 idConvenio NUMBER NOT NULL,
@@ -241,6 +241,7 @@ FOREIGN KEY (codLipidio, idClass)
 REFERENCES lipidios (codLipidio, idClass)
 NOT DEFERRABLE;
 
+--------------- erro de tabela não criada
 ALTER TABLE glicoNutri ADD CONSTRAINT GLICOSES_GLICONUTRI_FK
 FOREIGN KEY (codGlicose, idClass)
 REFERENCES glicoses (codGlicose, idClass)
