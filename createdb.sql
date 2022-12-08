@@ -258,7 +258,6 @@ FOREIGN KEY (codLipidio, idClass)
 REFERENCES lipidios (codLipidio, idClass)
 NOT DEFERRABLE;
 
---------------- erro de tabela não criada
 ALTER TABLE glicoNutri ADD CONSTRAINT GLICOSES_GLICONUTRI_FK
 FOREIGN KEY (codGlicose, idClass)
 REFERENCES glicoses (codGlicose, idClass)
