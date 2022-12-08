@@ -143,7 +143,7 @@ CREATE TABLE formNutri (
                 idNutri NUMBER NOT NULL,
                 idMedico NUMBER NOT NULL,
                 CRM VARCHAR2(80) NOT NULL,
-                peso FLOAT NOT NULL,
+                peso NUMBER NOT NULL,
                 idHospital NUMBER NOT NULL,
                 CNPJ VARCHAR2(18) NOT NULL,
                 idSecao NUMBER NOT NULL,
@@ -153,9 +153,9 @@ CREATE TABLE formNutri (
                 idAcesso NUMBER NOT NULL,
                 data DATE NOT NULL,
                 velocidadeInfusao VARCHAR2(80) NOT NULL,
-                horas FLOAT NOT NULL,
-                volumeTotal FLOAT NOT NULL,
-                volumeEquipo FLOAT NOT NULL,
+                horas NUMBER NOT NULL,
+                volumeTotal NUMBER NOT NULL,
+                volumeEquipo NUMBER NOT NULL,
                 observacao VARCHAR2(80),
                 mudanca VARCHAR2(120),
                 codVitaminaNutri NUMBER,
@@ -236,6 +236,12 @@ CREATE TABLE aminoNutri (
                 excesso VARCHAR2(10),
                 total VARCHAR(10),
                 CONSTRAINT CODAMINONUTRI PRIMARY KEY (codAminoNutri)
+);
+
+CREATE TABLE formLog (
+                idNutri NUMBER NOT NULL,
+                CRM VARCHAR2(80) NOT NULL,
+                dataMudanca DATE NOT NULL
 );
 
 ALTER TABLE vitaminaNutri ADD CONSTRAINT VITAMINAS_VITAMINANUTRI_FK
@@ -328,7 +334,6 @@ FOREIGN KEY (idPaciente, idConvenio)
 REFERENCES paciente (idPaciente, idConvenio)
 NOT DEFERRABLE;
 
------------------
 ALTER TABLE formNutri ADD CONSTRAINT ACESSONUTRI_IDENTIFYNUTRI_FK
 FOREIGN KEY (idAcesso)
 REFERENCES acessoNutri (idAcesso)
@@ -368,3 +373,8 @@ ALTER TABLE formNutri ADD CONSTRAINT codAminoNutri_FK
 FOREIGN KEY (codAminoNutri)
 REFERENCES aminoNutri  (codAminoNutri)
 NOT DEFERRABLE;
+
+-- TRIGGERS
+
+INSERT INTO formLog (crm, idNutri, dataMudanca)
+VALUES (:new.crm, :new.idNutri, SYSDATE);
