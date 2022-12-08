@@ -385,8 +385,8 @@ select p.nome as Nome_Paciente
 , f.data as Data
 , s.nome as Secao
 , l.numero as Leito
-, a.tipoAcesso as Acesso
-, c.nome as Convenio
+, ac.tipoAcesso as Acesso
+, co.nome as Convenio
 , f.peso as Peso
 , am.total as Aminoacido
 , g.total as Glicose
@@ -395,7 +395,7 @@ select p.nome as Nome_Paciente
 , o.total as Oligoelemento
 , v.total as Vitamina
 , ag.total as Agua_Injecao
-, f.velocidadeDeInfusao as Velocidade_Infusao
+, f.velocidadeInfusao as Velocidade_Infusao
 , f.horas as Horas
 , f.volumeTotal as Volume_Total
 , f.volumeEquipo as Voluma_Equipo
@@ -403,15 +403,15 @@ select p.nome as Nome_Paciente
 , m.CRM as CRM
 from formNutri f
 INNER JOIN paciente p ON (p.idPaciente = f.idPaciente)
-INNER JOIN hospital h ON (h.idHospítal = f.idHospital)
+INNER JOIN hospital h ON (h.idHospital = f.idHospital)
 INNER JOIN secao s ON (s.idSecao = f.idSecao)
 INNER JOIN leito l ON (l.idLeito = f.idLeito)
-INNER JOIN acessoNutri a ON (a.idAcesso = f.idAcesso)
-INNER JOIN convenio c ON (c.idConvenio = f.idConvenio)
-INNER JOIN medigo m ON (m.idMedico = f.idMedico)
+INNER JOIN acessoNutri ac ON (ac.idAcesso = f.idAcesso)
+INNER JOIN convenio co ON (co.idConvenio = f.idConvenio)
+INNER JOIN medico m ON (m.idMedico = f.idMedico)
 INNER JOIN aminoNutri am ON (am.codAminoNutri = f.codAminoNutri)
 INNER JOIN glicoNutri g ON (g.codGlicoNutri = f.codGlicoNutri)
-INNER JOIN lipiNutri lip ON (lip.codGlicoNutri = f.codGlicoNutri)
+INNER JOIN lipiNutri lip ON (lip.codLipiNutri = f.codLipiNutri)
 INNER JOIN eletroNutri e ON (e.codEletroNutri = f.codEletroNutri)
 INNER JOIN oligoNutri o ON (o.codOligoNutri = f.codOligoNutri)
 INNER JOIN vitaminaNutri v ON (v.codVitaminaNutri = f.codVitaminaNutri)
