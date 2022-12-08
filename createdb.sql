@@ -158,12 +158,18 @@ CREATE TABLE formNutri (
                 volumeEquipo FLOAT NOT NULL,
                 observacao VARCHAR2(80),
                 mudanca VARCHAR2(120),
+                codVitaminaNutri NUMBER,
+                codSolucaoNutri NUMBER,
+                codOligoNutri NUMBER,
+                codLipiNutri NUMBER,
+                codGlicoNutri NUMBER,
+                codEletroNutri NUMBER,
+                codAminoNutri NUMBER,
                 CONSTRAINT IDNUTRI PRIMARY KEY (idNutri)
 );
 
 CREATE TABLE vitaminaNutri (
                 codVitaminaNutri NUMBER NOT NULL,
-                idNutri NUMBER NOT NULL,
                 codVitaminas NUMBER NOT NULL,
                 idClass NUMBER NOT NULL,
                 qtd VARCHAR2(10) NOT NULL,
@@ -174,7 +180,6 @@ CREATE TABLE vitaminaNutri (
 
 CREATE TABLE solucaoNutri (
                 codSolucaoNutri NUMBER NOT NULL,
-                idNutri NUMBER NOT NULL,
                 idClass NUMBER NOT NULL,
                 codSolucoes NUMBER NOT NULL,
                 qtd VARCHAR2(10) NOT NULL,
@@ -185,7 +190,6 @@ CREATE TABLE solucaoNutri (
 
 CREATE TABLE oligoNutri (
                 codOligoNutri NUMBER NOT NULL,
-                idNutri NUMBER NOT NULL,
                 idClass NUMBER NOT NULL,
                 codOligo NUMBER NOT NULL,
                 qtd VARCHAR2(10) NOT NULL,
@@ -198,7 +202,6 @@ CREATE TABLE lipiNutri (
                 codLipiNutri NUMBER NOT NULL,
                 codLipidio NUMBER NOT NULL,
                 idClass NUMBER NOT NULL,
-                idNutri NUMBER NOT NULL,
                 qtd VARCHAR2(10) NOT NULL,
                 excesso VARCHAR2(10),
                 total VARCHAR(10),
@@ -208,7 +211,6 @@ CREATE TABLE lipiNutri (
 CREATE TABLE glicoNutri (
                 codGlicoNutri NUMBER NOT NULL,
                 codGlicose NUMBER NOT NULL,
-                idNutri NUMBER NOT NULL,
                 idClass NUMBER NOT NULL,
                 qtd VARCHAR2(10) NOT NULL,
                 excesso VARCHAR2(10),
@@ -218,7 +220,6 @@ CREATE TABLE glicoNutri (
 
 CREATE TABLE eletroNutri (
                 codEletroNutri NUMBER NOT NULL,
-                idNutri NUMBER NOT NULL,
                 idClass NUMBER NOT NULL,
                 codEletrolito NUMBER NOT NULL,
                 qtd VARCHAR2(10) NOT NULL,
@@ -229,7 +230,6 @@ CREATE TABLE eletroNutri (
 
 CREATE TABLE aminoNutri (
                 codAminoNutri NUMBER NOT NULL,
-                idNutri NUMBER NOT NULL,
                 codAminoacido NUMBER NOT NULL,
                 idClass NUMBER NOT NULL,
                 qtd VARCHAR2(10) NOT NULL,
@@ -328,42 +328,43 @@ FOREIGN KEY (idPaciente, idConvenio)
 REFERENCES paciente (idPaciente, idConvenio)
 NOT DEFERRABLE;
 
+-----------------
 ALTER TABLE formNutri ADD CONSTRAINT ACESSONUTRI_IDENTIFYNUTRI_FK
 FOREIGN KEY (idAcesso)
 REFERENCES acessoNutri (idAcesso)
 NOT DEFERRABLE;
 
-ALTER TABLE aminoNutri ADD CONSTRAINT FORMNUTRI_AMINONUTRI_FK
-FOREIGN KEY (idNutri)
-REFERENCES formNutri (idNutri)
+ALTER TABLE formNutri ADD CONSTRAINT ACESSONUTRI_IDENTIFYNUTRI_FK
+FOREIGN KEY (codVitaminaNutri)
+REFERENCES vitaminaNutri (codVitaminaNutri)
 NOT DEFERRABLE;
 
-ALTER TABLE eletroNutri ADD CONSTRAINT FORMNUTRI_ELETRONUTRI_FK
-FOREIGN KEY (idNutri)
-REFERENCES formNutri (idNutri)
+ALTER TABLE formNutri ADD CONSTRAINT ACESSONUTRI_IDENTIFYNUTRI_FK
+FOREIGN KEY (codSolucaoNutri)
+REFERENCES solucaoNutri (codSolucaoNutri)
 NOT DEFERRABLE;
 
-ALTER TABLE glicoNutri ADD CONSTRAINT FORMNUTRI_GLICONUTRI_FK
-FOREIGN KEY (idNutri)
-REFERENCES formNutri (idNutri)
+ALTER TABLE formNutri ADD CONSTRAINT ACESSONUTRI_IDENTIFYNUTRI_FK
+FOREIGN KEY (codOligoNutri)
+REFERENCES oligoNutri  (codOligoNutri)
 NOT DEFERRABLE;
 
-ALTER TABLE lipiNutri ADD CONSTRAINT FORMNUTRI_LIPINUTRI_FK
-FOREIGN KEY (idNutri)
-REFERENCES formNutri (idNutri)
+ALTER TABLE formNutri ADD CONSTRAINT ACESSONUTRI_IDENTIFYNUTRI_FK
+FOREIGN KEY (codLipiNutri)
+REFERENCES lipiNutri  (codLipiNutri)
 NOT DEFERRABLE;
 
-ALTER TABLE oligoNutri ADD CONSTRAINT FORMNUTRI_OLIGONUTRI_FK
-FOREIGN KEY (idNutri)
-REFERENCES formNutri (idNutri)
+ALTER TABLE formNutri ADD CONSTRAINT ACESSONUTRI_IDENTIFYNUTRI_FK
+FOREIGN KEY (codGlicoNutri)
+REFERENCES glicoNutri  (codGlicoNutri)
 NOT DEFERRABLE;
 
-ALTER TABLE solucaoNutri ADD CONSTRAINT FORMNUTRI_SOLUCAONUTRI_FK
-FOREIGN KEY (idNutri)
-REFERENCES formNutri (idNutri)
+ALTER TABLE formNutri ADD CONSTRAINT ACESSONUTRI_IDENTIFYNUTRI_FK
+FOREIGN KEY (codEletroNutri)
+REFERENCES eletroNutri  (codEletroNutri)
 NOT DEFERRABLE;
 
-ALTER TABLE vitaminaNutri ADD CONSTRAINT FORMNUTRI_VITAMINANUTRI_FK
-FOREIGN KEY (idNutri)
-REFERENCES formNutri (idNutri)
+ALTER TABLE formNutri ADD CONSTRAINT ACESSONUTRI_IDENTIFYNUTRI_FK
+FOREIGN KEY (codAminoNutri)
+REFERENCES aminoNutri  (codAminoNutri)
 NOT DEFERRABLE;
