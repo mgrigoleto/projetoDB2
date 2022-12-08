@@ -380,7 +380,6 @@ INSERT INTO formLog (crm, idNutri, dataMudanca)
 VALUES (:new.crm, :new.idNutri, SYSDATE);
 
 -- SELECT
-
 select p.nome as Nome_Paciente
 , h.razaoSocial as Hospital
 , f.data as Data
@@ -412,7 +411,7 @@ INNER JOIN convenio c ON (c.idConvenio = f.idConvenio)
 INNER JOIN medigo m ON (m.idMedico = f.idMedico)
 INNER JOIN aminoNutri am ON (am.codAminoNutri = f.codAminoNutri)
 INNER JOIN glicoNutri g ON (g.codGlicoNutri = f.codGlicoNutri)
-INNER JOIN lipiNutri lip ON lip.codGlicoNutri = f.codGlicoNutri)
+INNER JOIN lipiNutri lip ON (lip.codGlicoNutri = f.codGlicoNutri)
 INNER JOIN eletroNutri e ON (e.codEletroNutri = f.codEletroNutri)
 INNER JOIN oligoNutri o ON (o.codOligoNutri = f.codOligoNutri)
 INNER JOIN vitaminaNutri v ON (v.codVitaminaNutri = f.codVitaminaNutri)
