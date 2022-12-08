@@ -116,6 +116,7 @@ CREATE TABLE medico (
                 nome VARCHAR2(80) NOT NULL,
                 sobrenome VARCHAR2(80) NOT NULL,
                 especializacao VARCHAR2(80),
+                ativo CHAR(1) DEFAULT '1',
                 CONSTRAINT IDMEDICO PRIMARY KEY (idMedico, CRM)
 );
 
@@ -155,6 +156,8 @@ CREATE TABLE formNutri (
                 horas FLOAT NOT NULL,
                 volumeTotal FLOAT NOT NULL,
                 volumeEquipo FLOAT NOT NULL,
+                observacao VARCHAR2(80),
+                mudanca VARCHAR2(120),
                 CONSTRAINT IDNUTRI PRIMARY KEY (idNutri)
 );
 
@@ -163,7 +166,9 @@ CREATE TABLE vitaminaNutri (
                 idNutri NUMBER NOT NULL,
                 codVitaminas NUMBER NOT NULL,
                 idClass NUMBER NOT NULL,
-                qtd VARCHAR2(80) NOT NULL,
+                qtd VARCHAR2(10) NOT NULL,
+                excesso VARCHAR2(10),
+                total VARCHAR(10),
                 CONSTRAINT CODVITAMINANUTRI PRIMARY KEY (codVitaminaNutri)
 );
 
@@ -172,7 +177,9 @@ CREATE TABLE solucaoNutri (
                 idNutri NUMBER NOT NULL,
                 idClass NUMBER NOT NULL,
                 codSolucoes NUMBER NOT NULL,
-                qtd VARCHAR2(80) NOT NULL,
+                qtd VARCHAR2(10) NOT NULL,
+                excesso VARCHAR2(10),
+                total VARCHAR(10),
                 CONSTRAINT CODSOLUCAONUTRI PRIMARY KEY (codSolucaoNutri)
 );
 
@@ -181,7 +188,9 @@ CREATE TABLE oligoNutri (
                 idNutri NUMBER NOT NULL,
                 idClass NUMBER NOT NULL,
                 codOligo NUMBER NOT NULL,
-                qtd VARCHAR2(80) NOT NULL,
+                qtd VARCHAR2(10) NOT NULL,
+                excesso VARCHAR2(10),
+                total VARCHAR(10),
                 CONSTRAINT CODOLIGONUTRI PRIMARY KEY (codOligoNutri)
 );
 
@@ -190,7 +199,9 @@ CREATE TABLE lipiNutri (
                 codLipidio NUMBER NOT NULL,
                 idClass NUMBER NOT NULL,
                 idNutri NUMBER NOT NULL,
-                qtd VARCHAR2(80) NOT NULL,
+                qtd VARCHAR2(10) NOT NULL,
+                excesso VARCHAR2(10),
+                total VARCHAR(10),
                 CONSTRAINT CODLIPINUTRI PRIMARY KEY (codLipiNutri)
 );
 
@@ -199,7 +210,9 @@ CREATE TABLE glicoNutri (
                 codGlicose NUMBER NOT NULL,
                 idNutri NUMBER NOT NULL,
                 idClass NUMBER NOT NULL,
-                qtd VARCHAR2(80) NOT NULL,
+                qtd VARCHAR2(10) NOT NULL,
+                excesso VARCHAR2(10),
+                total VARCHAR(10),
                 CONSTRAINT CODGLICONUTRI PRIMARY KEY (codGlicoNutri)
 );
 
@@ -208,7 +221,9 @@ CREATE TABLE eletroNutri (
                 idNutri NUMBER NOT NULL,
                 idClass NUMBER NOT NULL,
                 codEletrolito NUMBER NOT NULL,
-                qtd VARCHAR2(80) NOT NULL,
+                qtd VARCHAR2(10) NOT NULL,
+                excesso VARCHAR2(10),
+                total VARCHAR(10),
                 CONSTRAINT CODELETRONUTRI PRIMARY KEY (codEletroNutri)
 );
 
@@ -217,7 +232,9 @@ CREATE TABLE aminoNutri (
                 idNutri NUMBER NOT NULL,
                 codAminoacido NUMBER NOT NULL,
                 idClass NUMBER NOT NULL,
-                qtd VARCHAR2(80) NOT NULL,
+                qtd VARCHAR2(10) NOT NULL,
+                excesso VARCHAR2(10),
+                total VARCHAR(10),
                 CONSTRAINT CODAMINONUTRI PRIMARY KEY (codAminoNutri)
 );
 
