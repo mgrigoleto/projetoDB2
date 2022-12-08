@@ -103,7 +103,7 @@ CREATE TABLE leito (
 
 CREATE TABLE convenio (
                 idConvenio NUMBER NOT NULL,
-                nome VARCHAR2(80)(20) NOT NULL,
+                nome VARCHAR2(20) NOT NULL,
                 CONSTRAINT IDCONVENIO PRIMARY KEY (idConvenio)
 );
 
